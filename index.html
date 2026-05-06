@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>stingray — Ads that leave a mark</title>
+<title>stingray - Ads that leave a mark</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -399,7 +399,7 @@
   }
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1px;
     background: var(--line);
     border: 1px solid var(--line);
@@ -526,20 +526,29 @@
     border-color: var(--bluebonnet);
     box-shadow: 0 30px 60px -20px rgba(36,35,224,0.18);
   }
-  .test-client-logo {
-    height: 22px;
+  .test-head {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
     margin-bottom: 22px;
+  }
+  .test-client-logo {
     display: flex; align-items: center; gap: 8px;
     font-weight: 700; font-size: 15px;
     color: var(--ink);
     letter-spacing: -0.02em;
   }
   .test-client-logo .dot {
-    width: 18px; height: 18px;
+    width: 22px; height: 22px;
     border-radius: 50%;
     display: inline-flex; align-items: center; justify-content: center;
-    font-size: 10px; color: var(--white);
-    background: var(--bluebonnet);
+    font-size: 11px; font-weight: 600;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--bluebonnet) 0%, var(--bluebonnet-deep) 100%);
+  }
+  .test-stars {
+    display: inline-flex;
+    gap: 2px;
+    color: var(--bluebonnet);
   }
   .test-title {
     font-size: 16px; font-weight: 600;
@@ -615,12 +624,11 @@
     white-space: nowrap;
   }
 
-  /* ─── CTA ─── */
-  .cta {
+  /* ─── CONTACT (replaces CTA section) ─── */
+  .contact {
     background: var(--black);
     color: var(--white);
-    padding: 180px 48px;
-    text-align: center;
+    padding: 140px 48px;
     position: relative;
     overflow: hidden;
     isolation: isolate;
@@ -647,15 +655,24 @@
     right: 5vw; bottom: 10%;
     background: radial-gradient(ellipse at center, rgba(93,92,255,0.55) 0%, transparent 70%);
   }
-  .cta-inner { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; }
-  .cta h2 {
-    font-size: clamp(48px, 7vw, 96px);
-    font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
-    margin-bottom: 28px;
+  .contact .container { position: relative; z-index: 2; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
   }
-  .cta h2 em {
+  .contact-intro { max-width: 540px; }
+  .eyebrow-light { color: rgba(255,255,255,0.6); }
+  .eyebrow-light::before { background: rgba(255,255,255,0.4); }
+  .contact-title {
+    font-size: clamp(44px, 5.5vw, 80px);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    margin-bottom: 24px;
+  }
+  .contact-title em {
     font-style: italic; font-weight: 700;
     background: linear-gradient(120deg, #b3b2ff 0%, var(--white) 100%);
     -webkit-background-clip: text; background-clip: text;
@@ -663,32 +680,174 @@
     display: inline-block;
     padding-right: 0.05em;
   }
-  .cta h2 .punct {
+  .contact-title .punct {
     background: linear-gradient(120deg, #b3b2ff 0%, var(--white) 100%);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-left: -0.05em;
   }
-  .cta p {
-    font-size: 19px; color: rgba(255,255,255,0.75);
-    margin-bottom: 44px; max-width: 540px;
-    margin-left: auto; margin-right: auto;
+  .contact-lede {
+    font-size: 17px;
     line-height: 1.55;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 44px;
   }
-  .cta-btn {
-    display: inline-flex; align-items: center; gap: 14px;
-    padding: 22px 38px;
+  .contact-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .contact-meta-block p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.78);
+  }
+  .contact-meta-block a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+    transition: border-color .25s, color .25s;
+  }
+  .contact-meta-block a:hover {
+    color: var(--white);
+    border-color: var(--white);
+  }
+  .contact-meta-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 10px;
+  }
+
+  /* ─── FORM ─── */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 36px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .field-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .field-opt {
+    text-transform: none;
+    letter-spacing: 0;
+    color: rgba(255,255,255,0.35);
+    font-weight: 400;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    padding: 14px 16px;
+    color: var(--white);
+    font-family: inherit;
+    /* 16px to prevent iOS zoom-on-focus */
+    font-size: 16px;
+    line-height: 1.4;
+    transition: border-color .25s, background .25s, box-shadow .25s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .field input:hover,
+  .field select:hover,
+  .field textarea:hover {
+    border-color: rgba(255,255,255,0.22);
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--bluebonnet-light);
+    background: rgba(36,35,224,0.08);
+    box-shadow: 0 0 0 4px rgba(93,92,255,0.12);
+  }
+  .field input::placeholder,
+  .field textarea::placeholder { color: rgba(255,255,255,0.32); }
+  .field textarea { resize: vertical; min-height: 100px; }
+  .field select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1l5 5 5-5' stroke='%23ffffff' stroke-opacity='0.5' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+  .field input:invalid:not(:placeholder-shown),
+  .field textarea:invalid:not(:placeholder-shown) {
+    border-color: rgba(255, 100, 100, 0.4);
+  }
+  .contact-submit {
+    margin-top: 12px;
+    padding: 18px 28px;
     background: var(--white);
     color: var(--bluebonnet);
+    border: none;
     border-radius: 100px;
-    font-weight: 600; font-size: 16px;
-    text-decoration: none;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
     transition: all .3s cubic-bezier(.2,.8,.2,1);
   }
-  .cta-btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 50px rgba(255,255,255,0.2);
+  .contact-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(255,255,255,0.16);
   }
+  .contact-submit svg { transition: transform .3s ease; }
+  .contact-submit:hover svg { transform: translateX(4px); }
+  .contact-submit:disabled {
+    opacity: 0.5;
+    cursor: wait;
+    transform: none;
+  }
+  .contact-success {
+    margin-top: 4px;
+    padding: 14px 16px;
+    background: rgba(93,92,255,0.12);
+    border: 1px solid rgba(93,92,255,0.4);
+    border-radius: 6px;
+    color: var(--white);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .contact-success strong { color: #b3b2ff; }
+  .contact-success.error {
+    background: rgba(255, 100, 100, 0.08);
+    border-color: rgba(255, 100, 100, 0.4);
+  }
+  .contact-success.error strong { color: #ffb3b3; }
 
   /* ─── FOOTER ─── */
   footer {
@@ -758,23 +917,66 @@
     .partner-grid { grid-template-columns: repeat(3, 1fr); }
     .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 24px; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 56px; }
+    .contact-intro { max-width: none; }
   }
   @media (max-width: 640px) {
-    nav { padding: 16px 24px; }
+    nav { padding: 14px 20px; }
     .nav-links { display: none; }
-    .logo-mark { width: 44px; }
-    .logo-word { font-size: 19px; }
-    .hero { padding: 140px 24px 80px; }
-    section { padding: 90px 24px; }
-    .partners { padding: 70px 24px; }
-    .cta { padding: 120px 24px; }
-    footer { padding: 50px 24px 24px; }
+    .logo-mark { width: 40px; }
+    .logo-word { font-size: 18px; }
+    .nav-cta { padding: 9px 16px; font-size: 12px; }
+
+    .hero { padding: 130px 20px 70px; }
+    .hero h1 { letter-spacing: -0.035em; }
+    .hero-sub { font-size: 16px; }
+    .btn-primary, .btn-ghost { padding: 15px 24px; font-size: 14px; }
+    .hero-stats { margin-top: 60px; padding-top: 28px; gap: 20px; }
+    .stat-num { font-size: 32px; }
+    .stat-label { font-size: 10px; }
+
+    section { padding: 80px 20px; }
+    .partners { padding: 60px 20px; }
+    .contact { padding: 90px 20px; }
+    footer { padding: 50px 20px 24px; }
+
     .services-grid { grid-template-columns: 1fr; }
-    .test-grid { grid-template-columns: 1fr; }
+    .service { padding: 36px 28px; min-height: auto; }
+    .service-icon { width: 40px; height: 40px; margin-bottom: 22px; }
+    .service-title { font-size: 22px; }
+
+    .test-grid { grid-template-columns: 1fr; gap: 16px; }
+    .test-card { padding: 28px 24px; }
+    .test-quote { font-size: 14.5px; }
+
     .partner-grid { grid-template-columns: repeat(2, 1fr); }
-    .services-head { flex-direction: column; align-items: start; }
-    .hero-stats { margin-top: 70px; }
+    .partner { padding: 32px 16px; font-size: 14px; }
+
+    .services-head { flex-direction: column; align-items: start; gap: 24px; }
     .footer-grid { grid-template-columns: 1fr; gap: 36px; padding-bottom: 36px; }
+    .footer-bottom { flex-direction: column; align-items: start; gap: 8px; }
+
+    /* Marquee — tone down on mobile so it doesn't overwhelm */
+    .marquee { padding: 18px 0; }
+    .marquee-track { gap: 36px; }
+    .marquee-item { font-size: 18px; gap: 36px; }
+    .marquee-item::after { width: 5px; height: 5px; }
+
+    /* Manifesto — keep it readable */
+    .manifesto { padding: 110px 20px; }
+    .manifesto-quote { line-height: 1.18; }
+
+    /* Contact — single column form */
+    .contact-grid { gap: 40px; }
+    .contact-form { padding: 24px 20px; gap: 16px; }
+    .field-row { grid-template-columns: 1fr; gap: 16px; }
+    .contact-meta { grid-template-columns: 1fr; gap: 24px; }
+    .contact-lede { font-size: 16px; margin-bottom: 32px; }
+    .contact-submit { padding: 16px 24px; font-size: 14px; }
+
+    /* Testimonials head — keep stars + logo on one line */
+    .test-head { gap: 8px; }
+    .test-client-logo { font-size: 14px; }
   }
   /* ════════════════════════════════════════
      INTRO LAYER
@@ -994,9 +1196,13 @@
 
   @media (max-width: 640px) {
     .intro-hud { display: none; }
-    .intro-skip { top: 20px; right: 20px; padding: 8px 14px; font-size: 10px; }
-    .intro-progress { bottom: 28px; width: 160px; }
-    .intro-ui { top: 56%; }
+    .intro-skip { top: 16px; right: 16px; padding: 7px 12px; font-size: 10px; letter-spacing: 0.14em; }
+    .intro-progress { bottom: 24px; width: 140px; }
+    .intro-ui { top: 60%; }
+    .intro-eyebrow { font-size: 10px; letter-spacing: 0.26em; margin-bottom: 18px; }
+    .intro-wordmark { font-size: clamp(56px, 16vw, 88px); margin-bottom: 12px; }
+    .intro-tagline { font-size: 15px; }
+    .intro-status { font-size: 11px; letter-spacing: 0.14em; }
   }
 
 </style>
@@ -1128,7 +1334,7 @@
         <h2 class="section-title">Digital performance, <span class="accent">engineered</span> to dominate.</h2>
       </div>
       <p class="section-intro">
-        Six disciplines, one obsession: ads that don't just perform — they imprint.
+        Four disciplines, one obsession: ads that don't just perform — they imprint.
         Every channel weaponized. Every dollar accountable.
       </p>
     </div>
@@ -1155,30 +1361,16 @@
       </div>
       <div class="service">
         <div class="service-num">03</div>
-        <svg class="service-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18" stroke="currentColor" stroke-width="1.5"/><circle cx="6.5" cy="7" r="0.6" fill="currentColor"/><circle cx="8.5" cy="7" r="0.6" fill="currentColor"/><path d="M8 14l3-3 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3 class="service-title">Creative Production</h3>
-        <p class="service-desc">Hooks that snap, stories that stick. Scroll-stopping creative produced at the velocity performance demands.</p>
-        <svg class="service-arrow" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="service">
-        <div class="service-num">04</div>
         <svg class="service-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.5 7.1 17.2 8 11.7 4 7.8l5.5-.8L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
         <h3 class="service-title">Influencer & Creator</h3>
         <p class="service-desc">Curated creator partnerships built around story, signal and sales. We don't chase reach — we engineer trust at scale.</p>
         <svg class="service-arrow" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div class="service">
-        <div class="service-num">05</div>
+        <div class="service-num">04</div>
         <svg class="service-icon" viewBox="0 0 24 24" fill="none"><path d="M3 12c3-6 15-6 18 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 12c3 6 15 6 18 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
         <h3 class="service-title">Analytics & CRO</h3>
         <p class="service-desc">Server-side tracking, MMM, incrementality testing. Every pixel accounted for — every conversion explained.</p>
-        <svg class="service-arrow" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="service">
-        <div class="service-num">06</div>
-        <svg class="service-icon" viewBox="0 0 24 24" fill="none"><path d="M4 6c4 0 4 12 8 12s4-12 8-12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="4" cy="6" r="1.5" fill="currentColor"/><circle cx="20" cy="6" r="1.5" fill="currentColor"/></svg>
-        <h3 class="service-title">Brand Campaigns</h3>
-        <p class="service-desc">Memorable, premium brand work that compounds. The kind of campaigns that get remembered — and remembered for the right reasons.</p>
         <svg class="service-arrow" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
     </div>
@@ -1204,24 +1396,55 @@
     <h2 class="section-title">Trusted by founders <span class="accent">who refuse to blend in.</span></h2>
     <p class="section-intro">From DTC challengers to category leaders, stingray builds the campaigns that move markets — and the relationships that outlast them.</p>
     <div class="test-grid">
-      <div class="test-card">
-        <div class="test-client-logo"><span class="dot">U</span> ULTRON</div>
-        <div class="test-title">Digital Marketing for Private Investment Firm</div>
+
+      <article class="test-card">
+        <header class="test-head">
+          <div class="test-client-logo"><span class="dot">U</span> Ultron</div>
+          <div class="test-stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8 5.53 5z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8 5.53 5z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8 5.53 5z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8 5.53 5z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8 5.53 5z" fill="currentColor"/></svg>
+          </div>
+        </header>
+        <h3 class="test-title">Digital Marketing for Private Investment Firm</h3>
         <p class="test-quote">In a competitive market like crypto, there is a bunch of highly skilled professionals, but not all of them have amazing people skills and work ethic. Working with the stingray team is a pleasure because they really adapt to the work dynamics of the client.</p>
         <div class="test-author"><div class="test-avatar">JK</div><div><div class="test-name">Jacob Kapper</div><div class="test-role">CMO, Ultron Foundation</div></div></div>
-      </div>
-      <div class="test-card">
-        <div class="test-client-logo"><span class="dot">i</span> innowise</div>
-        <div class="test-title">Digital Marketing for Software Development Co.</div>
+      </article>
+
+      <article class="test-card">
+        <header class="test-head">
+          <div class="test-client-logo"><span class="dot">i</span> innowise</div>
+          <div class="test-stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8 5.53 5z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8 5.53 5z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8 5.53 5z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8 5.53 5z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8 5.53 5z" fill="currentColor"/></svg>
+          </div>
+        </header>
+        <h3 class="test-title">Digital Marketing for Software Development Co.</h3>
         <p class="test-quote">A data-driven partner. Stingray has taken the time to examine the client's branding, messaging, and positioning to develop strategies and content that match and provide valuable insights to further help them grow their business. They remain communicative, organized, and reliable.</p>
         <div class="test-author"><div class="test-avatar">RB</div><div><div class="test-name">Rory Boselko</div><div class="test-role">Chief Marketing Officer</div></div></div>
-      </div>
-      <div class="test-card">
-        <div class="test-client-logo"><span class="dot">L</span> LN Educational</div>
-        <div class="test-title">Digital Marketing for DeFi Educational Portal</div>
+      </article>
+
+      <article class="test-card">
+        <header class="test-head">
+          <div class="test-client-logo"><span class="dot">L</span> LN Educational</div>
+          <div class="test-stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8 5.53 5z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8 5.53 5z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8 5.53 5z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8 5.53 5z" fill="currentColor"/></svg>
+            <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 0l2.47 5 5.53.8-4 3.9.94 5.5L8 12.6 3.06 15.2 4 9.7 0 5.8 5.53 5z" fill="currentColor"/></svg>
+          </div>
+        </header>
+        <h3 class="test-title">Digital Marketing for DeFi Educational Portal</h3>
         <p class="test-quote">Stingray's work has improved brand messaging and helped increase sales by 250%. They've deployed top-notch project management and outstanding customer service — they go above and beyond to ensure the project's success. Overall, they are flexible, accommodating, and proactive.</p>
         <div class="test-author"><div class="test-avatar">CE</div><div><div class="test-name">Charles Ellingsen</div><div class="test-role">CEO & Founder</div></div></div>
-      </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -1246,21 +1469,70 @@
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta" id="cta">
+<!-- CONTACT -->
+<section class="contact" id="cta">
   <div class="cta-aurora">
     <div class="a1"></div>
     <div class="a2"></div>
   </div>
-  <div class="cta-inner">
-    <h2>Ready to leave a <em>mark</em><span class="punct">?</span></h2>
-    <p>We sting, but in the best possible way — leaving a lasting mark, that's for sure. Tell us where you want to go.</p>
-    <a href="#" class="cta-btn">
-      Start your project
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-intro">
+        <span class="eyebrow eyebrow-light">Start a project</span>
+        <h2 class="contact-title">Ready to leave a <em>mark</em><span class="punct">?</span></h2>
+        <p class="contact-lede">We sting, but in the best possible way — leaving a lasting mark, that's for sure. Tell us where you want to go.</p>
+        <div class="contact-meta">
+          <div class="contact-meta-block">
+            <span class="contact-meta-label">Studio</span>
+            <p>Lebanon, Dbayeh Waterfront City<br>BP1 Office 201</p>
+          </div>
+          <div class="contact-meta-block">
+            <span class="contact-meta-label">Reach us</span>
+            <p><a href="mailto:hello@stingray.com">hello@stingray.com</a><br><a href="tel:+9613123456">+961 3 123 456</a></p>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/mpqblllo" method="POST" novalidate>
+        <div class="field-row">
+          <label class="field">
+            <span class="field-label">Name</span>
+            <input name="name" type="text" required autocomplete="name" />
+          </label>
+          <label class="field">
+            <span class="field-label">Email</span>
+            <input name="email" type="email" required autocomplete="email" />
+          </label>
+        </div>
+        <label class="field">
+          <span class="field-label">Company <span class="field-opt">(optional)</span></span>
+          <input name="company" type="text" autocomplete="organization" />
+        </label>
+        <label class="field">
+          <span class="field-label">What do you need?</span>
+          <select name="service" required>
+            <option value="" disabled selected hidden>Select a service</option>
+            <option>Performance Media</option>
+            <option>Growth Strategy</option>
+            <option>Influencer & Creator</option>
+            <option>Analytics & CRO</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="field-label">Tell us about the project</span>
+          <textarea name="message" rows="4" required placeholder="Goals, timing, anything we should know."></textarea>
+        </label>
+        <button type="submit" class="contact-submit">
+          <span class="contact-submit-label">Send the brief</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <p class="contact-success" id="contact-success" hidden>
+          <strong>Got it.</strong> <span class="success-text">We'll get back to you within one business day.</span>
+        </p>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -1280,7 +1552,7 @@
         stingray.com
       </address>
     </div>
-    <div class="footer-col"><h5>Services</h5><ul><li><a href="#">Performance Media</a></li><li><a href="#">Growth Strategy</a></li><li><a href="#">Creative Production</a></li><li><a href="#">Analytics & CRO</a></li></ul></div>
+    <div class="footer-col"><h5>Services</h5><ul><li><a href="#">Performance Media</a></li><li><a href="#">Growth Strategy</a></li><li><a href="#">Influencer & Creator</a></li><li><a href="#">Analytics & CRO</a></li></ul></div>
     <div class="footer-col"><h5>Studio</h5><ul><li><a href="#">About</a></li><li><a href="#">Work</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li></ul></div>
     <div class="footer-col"><h5>Connect</h5><ul><li><a href="#">Contact</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Instagram</a></li><li><a href="#">X / Twitter</a></li></ul></div>
   </div>
@@ -1297,6 +1569,68 @@
     if (window.scrollY > 60) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
   });
+
+  // ──────────────────────────────────────────
+  // Contact form — submits to Formspree, which forwards to the inbox
+  // configured on the Formspree dashboard for this endpoint.
+  //
+  // The <form> tag itself has action="https://formspree.io/f/mpqblllo"
+  // method="POST" so submission still works if JS fails (Formspree
+  // shows its own confirmation page in that fallback path).
+  //
+  // The handler below intercepts submission to keep the user on-page
+  // and show our own in-page success state via fetch + Accept: JSON.
+  // ──────────────────────────────────────────
+  (function () {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+    const FORMSPREE_ENDPOINT = form.getAttribute('action') || 'https://formspree.io/f/mpqblllo';
+    const successEl   = document.getElementById('contact-success');
+    const successText = successEl ? successEl.querySelector('.success-text') : null;
+    const submitBtn   = form.querySelector('.contact-submit');
+    const submitLabel = form.querySelector('.contact-submit-label');
+
+    function showResult(text, isError) {
+      if (!successEl) return;
+      if (successText && text) successText.textContent = text;
+      successEl.classList.toggle('error', !!isError);
+      successEl.hidden = false;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      submitBtn.disabled = true;
+      submitLabel.textContent = 'Sending';
+
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method:  'POST',
+          body:    new FormData(form),
+          headers: { 'Accept': 'application/json' },
+        });
+
+        if (res.ok) {
+          form.reset();
+          showResult("We'll get back to you within one business day.", false);
+          submitLabel.textContent = 'Send another';
+        } else {
+          const json = await res.json().catch(() => ({}));
+          const msg = (json.errors && json.errors.map(x => x.message).join(', '))
+                   || 'Something went wrong on our side. Please try again.';
+          showResult(msg, true);
+          submitLabel.textContent = 'Try again';
+        }
+      } catch (err) {
+        console.warn('[contact] Formspree submission failed', err);
+        showResult("Couldn't send right now. Please email info@swottm.com directly.", true);
+        submitLabel.textContent = 'Try again';
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  })();
 
   // ──────────────────────────────────────────
   // 3D particle stingray (Three.js)
@@ -1542,11 +1876,22 @@
     };
     img.src = HERO_IMG;
 
-    // ── SAFETY NET: regardless of what happens with the 3D scene,
-    // the intro MUST end. Fires at endAt + 2 seconds.
+    // ── PRIMARY end-intro driver — independent of requestAnimationFrame.
+    // setTimeout still runs in background tabs (just throttled), so the
+    // intro will reliably end even if the user opens the page in a
+    // background tab or alt-tabs away during loading.
     setTimeout(() => {
       if (!endFired) {
-        console.warn('[stingray] intro safety-timer fired — forcing end');
+        endFired = true;
+        endIntro();
+      }
+    }, INTRO.endAt * 1000);
+
+    // ── SAFETY NET: silent backup at endAt + 2s in case anything goes
+    // wrong with the primary timer (rare). No console warning — the
+    // fallback is benign and would only confuse non-technical viewers.
+    setTimeout(() => {
+      if (!endFired) {
         endFired = true;
         endIntro();
       }
