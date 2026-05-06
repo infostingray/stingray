@@ -1307,13 +1307,28 @@
   const HERO_IMG = 'assets/images/emblem-light.png';
 
   (function init3D() {
-    if (!window.THREE) return; // graceful fallback
+    if (!window.THREE) {
+      // Three.js failed to load (CDN block, offline, CSP, etc.) — skip the
+      // 3D intro entirely and reveal the hero immediately.
+      console.warn('[stingray] Three.js unavailable — skipping 3D intro');
+      document.body.classList.remove('intro-active');
+      document.body.classList.add('hero-revealed');
+      return;
+    }
 
     const canvas  = document.getElementById('hero-3d');
     const heroEl  = document.querySelector('.hero');
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x000000, 0);
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setClearColor(0x000000, 0);
+    } catch (e) {
+      console.warn('[stingray] WebGL context creation failed — skipping 3D intro', e);
+      document.body.classList.remove('intro-active');
+      document.body.classList.add('hero-revealed');
+      return;
+    }
 
     const scene  = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
@@ -1418,7 +1433,9 @@
 
     // ── Sample emblem silhouette → particle cloud ─────────────
     const img = new Image();
-    img.crossOrigin = 'anonymous';
+    // NOTE: do NOT set crossOrigin — these images are same-origin in production.
+    // Setting crossOrigin='anonymous' triggers a CORS preflight that fails on
+    // static hosts (Vercel included) when ACAO headers aren't sent.
     img.onload = () => {
       const W = 800;
       const H = Math.max(1, Math.floor(W * (img.height / img.width)));
@@ -1516,8 +1533,24 @@
       stingrayReady = true;
       resize();
     };
-    img.onerror = () => { /* leave plankton-only fallback */ };
+    img.onerror = (e) => {
+      console.warn('[stingray] emblem image failed to load — running intro without 3D', e);
+      // Critical: still progress the timeline so user isn't stuck on intro forever.
+      // Schedule end at the planned endAt time (or immediately if we're past it).
+      const ms = Math.max(0, INTRO.endAt * 1000 - performance.now());
+      setTimeout(() => { if (!endFired) { endFired = true; endIntro(); } }, ms);
+    };
     img.src = HERO_IMG;
+
+    // ── SAFETY NET: regardless of what happens with the 3D scene,
+    // the intro MUST end. Fires at endAt + 2 seconds.
+    setTimeout(() => {
+      if (!endFired) {
+        console.warn('[stingray] intro safety-timer fired — forcing end');
+        endFired = true;
+        endIntro();
+      }
+    }, (INTRO.endAt + 2) * 1000);
 
     // Soft round particle sprite — gives glow without per-pixel shader
     function makeSpriteTexture() {
