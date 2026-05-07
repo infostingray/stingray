@@ -4,7 +4,7 @@ Landing page for **stingray** — a digital advertising agency based in Dbayeh, 
 
 > *Ads that leave a **mark**.*
 
-A single-page experience built around the brand's *kings of the digital seas* identity. The hero is a WebGL particle stingray sampled from the official emblem silhouette, opened by a ~9-second cinematic intro sequence inspired by application launch experiences.
+A single-page experience built around the brand's *kings of the digital seas* identity. The hero is a WebGL particle stingray sampled from the official emblem silhouette, opened by a ~6-second cinematic intro sequence inspired by application launch experiences.
 
 ---
 
@@ -72,16 +72,16 @@ Then visit `http://localhost:8000`.
 
 ## The intro sequence
 
-The opening choreography runs in five phases over ~9 seconds:
+The opening choreography runs in five phases over ~6 seconds:
 
 | Time     | Phase        | What happens                                                          |
 | -------- | ------------ | --------------------------------------------------------------------- |
-| 0.0–1.4s | Void         | Black canvas. HUD lines type in. Status: *initializing core*.        |
-| 1.4–4.0s | Assembly     | Particles stream in from a hemisphere shell behind the camera; status rolls through *connecting → calibrating → welcome*; camera dollies from z=11.5 to z=9. |
-| 4.0s     | Lock         | Flash burst as particles snap into formation.                         |
-| 4.2–5.7s | Brand reveal | Eyebrow, wordmark (letter-by-letter 3D drop), and tagline appear.    |
-| 5.7–7.5s | Hold         | Brand identity holds while the stingray gently swims in place.       |
-| 7.5–8.9s | Handoff      | Stingray glides to hero pose; intro UI fades; hero text cascades in. |
+| 0.0–0.6s | Void         | Black canvas. HUD lines type in. Status: *initializing core*.        |
+| 0.6–2.4s | Assembly     | Particles stream in from a hemisphere shell behind the camera; status rolls through *connecting → calibrating*; camera dollies from z=11.5 to z=9. |
+| 2.4s     | Lock         | Flash burst as particles snap into formation.                         |
+| 2.6–3.7s | Brand reveal | Eyebrow, wordmark (letter-by-letter 3D drop), and tagline appear.    |
+| 3.7–4.8s | Hold         | Brand identity holds while the stingray gently swims in place.       |
+| 4.8–6.0s | Handoff      | Stingray glides to hero pose; intro UI fades; hero text cascades in. |
 
 Tuning lives in the `INTRO` constants block inside `index.html` (search for `const INTRO`).
 

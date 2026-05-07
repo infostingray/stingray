@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>stingray - Ads that leave a mark</title>
+<title>stingray - ads that leave a mark</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -741,6 +741,10 @@
     grid-template-columns: 1fr 1fr;
     gap: 18px;
   }
+  /* Country code narrow, phone wide. Falls back to single column on mobile. */
+  .field-row-phone {
+    grid-template-columns: minmax(150px, 200px) 1fr;
+  }
   .field {
     display: flex;
     flex-direction: column;
@@ -886,6 +890,46 @@
     color: rgba(255,255,255,0.5);
     font-style: normal;
   }
+  .footer-sister {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 28px;
+    padding: 16px 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.02);
+    text-decoration: none;
+    transition: border-color .3s ease, background .3s ease, transform .3s ease;
+    align-self: flex-start;
+  }
+  .footer-sister:hover {
+    border-color: rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.04);
+    transform: translateY(-2px);
+  }
+  .footer-sister-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+  .footer-sister-logo {
+    height: 28px;
+    width: auto;
+    display: block;
+    /* SVG ships with white wordmark + green accent — leave as-is */
+  }
+  .footer-sister-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.01em;
+    transition: color .3s ease;
+  }
+  .footer-sister:hover .footer-sister-meta {
+    color: var(--white);
+  }
   .footer-col h5 {
     font-size: 12px; font-weight: 600;
     letter-spacing: 0.18em; text-transform: uppercase;
@@ -1018,7 +1062,7 @@
     margin-bottom: 28px;
     opacity: 0;
     transform: translateY(8px);
-    animation: introFadeUp 1s 4.2s cubic-bezier(.2,.8,.2,1) forwards;
+    animation: introFadeUp 1s 2.6s cubic-bezier(.2,.8,.2,1) forwards;
   }
   .intro-wordmark {
     font-family: 'Poppins', sans-serif;
@@ -1036,16 +1080,16 @@
     opacity: 0;
     transform: translateY(50%) rotateX(-90deg);
     transform-origin: 50% 100%;
-    animation: letterDrop 0.95s cubic-bezier(.2,.8,.25,1) forwards;
+    animation: letterDrop 0.8s cubic-bezier(.2,.8,.25,1) forwards;
   }
-  .intro-wordmark .letter:nth-child(1) { animation-delay: 4.65s; }
-  .intro-wordmark .letter:nth-child(2) { animation-delay: 4.72s; }
-  .intro-wordmark .letter:nth-child(3) { animation-delay: 4.79s; }
-  .intro-wordmark .letter:nth-child(4) { animation-delay: 4.86s; }
-  .intro-wordmark .letter:nth-child(5) { animation-delay: 4.93s; }
-  .intro-wordmark .letter:nth-child(6) { animation-delay: 5.00s; }
-  .intro-wordmark .letter:nth-child(7) { animation-delay: 5.07s; }
-  .intro-wordmark .letter:nth-child(8) { animation-delay: 5.14s; }
+  .intro-wordmark .letter:nth-child(1) { animation-delay: 2.85s; }
+  .intro-wordmark .letter:nth-child(2) { animation-delay: 2.92s; }
+  .intro-wordmark .letter:nth-child(3) { animation-delay: 2.99s; }
+  .intro-wordmark .letter:nth-child(4) { animation-delay: 3.06s; }
+  .intro-wordmark .letter:nth-child(5) { animation-delay: 3.13s; }
+  .intro-wordmark .letter:nth-child(6) { animation-delay: 3.20s; }
+  .intro-wordmark .letter:nth-child(7) { animation-delay: 3.27s; }
+  .intro-wordmark .letter:nth-child(8) { animation-delay: 3.34s; }
   @keyframes letterDrop {
     to { opacity: 1; transform: translateY(0) rotateX(0); }
   }
@@ -1054,7 +1098,7 @@
     color: rgba(255,255,255,0.72);
     letter-spacing: 0.01em;
     opacity: 0;
-    animation: introFadeUp 0.9s 5.7s cubic-bezier(.2,.8,.2,1) forwards;
+    animation: introFadeUp 0.8s 3.7s cubic-bezier(.2,.8,.2,1) forwards;
   }
   .intro-tagline em {
     display: inline-block;
@@ -1091,10 +1135,10 @@
     transform: translateX(-6px);
     animation: hudRowIn 0.6s cubic-bezier(.2,.8,.2,1) forwards;
   }
-  .intro-hud .row:nth-child(1) { animation-delay: 0.30s; }
-  .intro-hud .row:nth-child(2) { animation-delay: 0.55s; }
-  .intro-hud .row:nth-child(3) { animation-delay: 0.80s; }
-  .intro-hud .row:nth-child(4) { animation-delay: 1.05s; }
+  .intro-hud .row:nth-child(1) { animation-delay: 0.20s; }
+  .intro-hud .row:nth-child(2) { animation-delay: 0.40s; }
+  .intro-hud .row:nth-child(3) { animation-delay: 0.60s; }
+  .intro-hud .row:nth-child(4) { animation-delay: 0.80s; }
   @keyframes hudRowIn {
     to { opacity: 1; transform: translateX(0); }
   }
@@ -1118,7 +1162,7 @@
   .intro-progress-bar {
     width: 0%; height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4) 50%, var(--white));
-    animation: introLoad 7.5s cubic-bezier(.6,.05,.05,1) forwards;
+    animation: introLoad 5s cubic-bezier(.6,.05,.05,1) forwards;
   }
   @keyframes introLoad { to { width: 100%; } }
 
@@ -1139,7 +1183,7 @@
     -webkit-backdrop-filter: blur(10px);
     transition: all 0.3s, opacity 0.5s;
     opacity: 0;
-    animation: introFadeUp 0.8s 1.4s forwards;
+    animation: introFadeUp 0.8s 0.6s forwards;
   }
   .intro-skip:hover {
     background: rgba(255,255,255,0.1);
@@ -1508,6 +1552,72 @@
           <span class="field-label">Company <span class="field-opt">(optional)</span></span>
           <input name="company" type="text" autocomplete="organization" />
         </label>
+        <div class="field-row field-row-phone">
+          <label class="field">
+            <span class="field-label">Country code</span>
+            <select name="country_code" required aria-label="Country code">
+              <option value="+961" selected>🇱🇧 +961 Lebanon</option>
+              <option value="+971">🇦🇪 +971 UAE</option>
+              <option value="+966">🇸🇦 +966 Saudi Arabia</option>
+              <option value="+974">🇶🇦 +974 Qatar</option>
+              <option value="+965">🇰🇼 +965 Kuwait</option>
+              <option value="+973">🇧🇭 +973 Bahrain</option>
+              <option value="+968">🇴🇲 +968 Oman</option>
+              <option value="+962">🇯🇴 +962 Jordan</option>
+              <option value="+20">🇪🇬 +20 Egypt</option>
+              <option value="+972">🇮🇱 +972 Israel</option>
+              <option value="+90">🇹🇷 +90 Turkey</option>
+              <option value="+1">🇺🇸 +1 USA / Canada</option>
+              <option value="+44">🇬🇧 +44 United Kingdom</option>
+              <option value="+33">🇫🇷 +33 France</option>
+              <option value="+49">🇩🇪 +49 Germany</option>
+              <option value="+39">🇮🇹 +39 Italy</option>
+              <option value="+34">🇪🇸 +34 Spain</option>
+              <option value="+351">🇵🇹 +351 Portugal</option>
+              <option value="+31">🇳🇱 +31 Netherlands</option>
+              <option value="+32">🇧🇪 +32 Belgium</option>
+              <option value="+41">🇨🇭 +41 Switzerland</option>
+              <option value="+43">🇦🇹 +43 Austria</option>
+              <option value="+45">🇩🇰 +45 Denmark</option>
+              <option value="+46">🇸🇪 +46 Sweden</option>
+              <option value="+47">🇳🇴 +47 Norway</option>
+              <option value="+358">🇫🇮 +358 Finland</option>
+              <option value="+353">🇮🇪 +353 Ireland</option>
+              <option value="+30">🇬🇷 +30 Greece</option>
+              <option value="+48">🇵🇱 +48 Poland</option>
+              <option value="+420">🇨🇿 +420 Czechia</option>
+              <option value="+91">🇮🇳 +91 India</option>
+              <option value="+92">🇵🇰 +92 Pakistan</option>
+              <option value="+86">🇨🇳 +86 China</option>
+              <option value="+852">🇭🇰 +852 Hong Kong</option>
+              <option value="+81">🇯🇵 +81 Japan</option>
+              <option value="+82">🇰🇷 +82 South Korea</option>
+              <option value="+65">🇸🇬 +65 Singapore</option>
+              <option value="+60">🇲🇾 +60 Malaysia</option>
+              <option value="+62">🇮🇩 +62 Indonesia</option>
+              <option value="+66">🇹🇭 +66 Thailand</option>
+              <option value="+84">🇻🇳 +84 Vietnam</option>
+              <option value="+63">🇵🇭 +63 Philippines</option>
+              <option value="+61">🇦🇺 +61 Australia</option>
+              <option value="+64">🇳🇿 +64 New Zealand</option>
+              <option value="+55">🇧🇷 +55 Brazil</option>
+              <option value="+52">🇲🇽 +52 Mexico</option>
+              <option value="+54">🇦🇷 +54 Argentina</option>
+              <option value="+56">🇨🇱 +56 Chile</option>
+              <option value="+57">🇨🇴 +57 Colombia</option>
+              <option value="+27">🇿🇦 +27 South Africa</option>
+              <option value="+234">🇳🇬 +234 Nigeria</option>
+              <option value="+254">🇰🇪 +254 Kenya</option>
+              <option value="+212">🇲🇦 +212 Morocco</option>
+              <option value="+216">🇹🇳 +216 Tunisia</option>
+              <option value="+213">🇩🇿 +213 Algeria</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">Phone</span>
+            <input name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="3 123 456" pattern="[0-9 \-]{4,}" />
+          </label>
+        </div>
         <label class="field">
           <span class="field-label">What do you need?</span>
           <select name="service" required>
@@ -1551,6 +1661,11 @@
         tel. +961 3 123 456<br>
         stingray.com
       </address>
+      <a class="footer-sister" href="https://www.swottm.com" target="_blank" rel="noopener">
+        <span class="footer-sister-label">Sister studio</span>
+        <img class="footer-sister-logo" src="assets/swot-logo.svg" alt="swot — creative studio" />
+        <span class="footer-sister-meta">our creative counterpart →</span>
+      </a>
     </div>
     <div class="footer-col"><h5>Services</h5><ul><li><a href="#">Performance Media</a></li><li><a href="#">Growth Strategy</a></li><li><a href="#">Influencer & Creator</a></li><li><a href="#">Analytics & CRO</a></li></ul></div>
     <div class="footer-col"><h5>Studio</h5><ul><li><a href="#">About</a></li><li><a href="#">Work</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li></ul></div>
@@ -1680,12 +1795,12 @@
     // ── Intro state ──
     let introActive = document.body.classList.contains('intro-active');
     const INTRO = {
-      assembleAt:    1.4,   // wait in the void; let HUD breathe
-      assembleDur:   2.4,   // slower, more deliberate assembly
-      flashAt:       4.0,   // lock-in moment
-      transitionAt:  7.5,   // long hold so the brand can land
-      transitionDur: 1.4,   // smoother glide to hero pose
-      endAt:         8.9,   // total runtime ≈ 9s
+      assembleAt:    0.6,   // brief void; HUD breathes in
+      assembleDur:   1.8,   // particles stream into formation
+      flashAt:       2.4,   // lock-in moment
+      transitionAt:  4.8,   // hold ends, glide begins
+      transitionDur: 1.2,   // smooth glide to hero pose
+      endAt:         6.0,   // total runtime ≈ 6s
     };
     let flashFired = false;
     let endFired = false;
@@ -1694,11 +1809,10 @@
     const statusEl = () => document.getElementById('intro-status');
     const statusTextEl = () => statusEl()?.querySelector('.status-text');
     const STATUS_TIMELINE = [
-      { at: 0.9, text: 'Initializing core' },
-      { at: 2.4, text: 'Connecting to deep network' },
-      { at: 3.4, text: 'Calibrating signal' },
-      { at: 3.95, text: 'Welcome' },
-      { at: 4.30, hide: true },
+      { at: 0.4, text: 'Initializing core' },
+      { at: 1.4, text: 'Connecting to deep network' },
+      { at: 2.0, text: 'Calibrating signal' },
+      { at: 2.6, hide: true },
     ];
     let statusIdx = 0;
     let statusBusy = false;
